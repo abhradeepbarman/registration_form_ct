@@ -7,7 +7,9 @@ const registerSchema = Yup.object().shape({
     age: Yup.number()
         .min(10, "Age must be at least 10")
         .required("Age is required"),
-    email: Yup.string().email("Invalid email").required("Email is required"),
+    email: Yup.string()
+        .matches(/^[^\s@]+@[^\s@]+\.[cC][oO][mM]$/, "Invalid Email")
+        .required("Email is required"),
     course: Yup.string()
         .required("Course is required")
         .equals([
